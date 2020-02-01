@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5609697829503522717}
   - component: {fileID: 5609697829503522718}
   - component: {fileID: 7251189941446415749}
+  - component: {fileID: 7187366185071673922}
   m_Layer: 0
   m_Name: NetworkedHunted
   m_TagString: Player
@@ -177,6 +178,18 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &7187366185071673922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609697829503522715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5525f2825a2388341931b9a054f5351a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5609697828025562542
 PrefabInstance:
   m_ObjectHideFlags: 0
