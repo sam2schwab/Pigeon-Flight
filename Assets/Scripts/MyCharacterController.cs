@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 
-public class MyCharacterController : NetworkedBehaviour
+public class MyCharacterController : MonoBehaviour
 {
     private Animator animator;
     public float rotateSpeed = 5;
@@ -19,7 +19,6 @@ public class MyCharacterController : NetworkedBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsLocalPlayer) return;
         if (Input.GetAxis("Vertical") <= 0.01f)
         {
             animator.SetBool("isWalking", false);
