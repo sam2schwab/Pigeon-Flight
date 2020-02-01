@@ -5,6 +5,7 @@ public class MyThirdPersonCamera : MonoBehaviour
     public Transform target;
     public bool useDefaultControls = true;
     public bool autoLockCursor;
+    public bool followTarget;
 
     [Header("Rotation")] 
     public float verticalAngle;
@@ -33,7 +34,9 @@ public class MyThirdPersonCamera : MonoBehaviour
         swivel.position = target.position;
         swivel.rotation = Quaternion.Euler(0, target.rotation.eulerAngles.y, 0);
         swivel.hideFlags = HideFlags.HideInHierarchy;
-        
+
+        if (followTarget) this.transform.parent = target;
+
         Cursor.lockState = (autoLockCursor)?CursorLockMode.Locked:CursorLockMode.None;
 
     }
@@ -64,7 +67,7 @@ public class MyThirdPersonCamera : MonoBehaviour
             
             ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
         }
-        
+
         //update position accordingly
         transform.position = targetPosition + swivel.forward * distance;
         transform.LookAt(target.transform);

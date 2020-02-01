@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class Hunted : MonoBehaviour
 {
-
-
     public float minSpeed;
     public float normalSpeed;
     public float maxSpeed;
 
+    public float rotateSpeed;
+
+    public float maxStamina;
     public float stamina;
     public int bpm;
-
 
     public bool isRunning;
     public bool isHidden;
@@ -31,5 +31,10 @@ public class Hunted : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void UpdateStamina()
+    {
+
     }
 }
