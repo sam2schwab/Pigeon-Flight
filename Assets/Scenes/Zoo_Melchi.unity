@@ -385,7 +385,7 @@ MonoBehaviour:
   target: {fileID: 2145460277}
   useDefaultControls: 1
   autoLockCursor: 1
-  followTarget: 1
+  followTarget: 0
   verticalAngle: 30
   horizontalAngle: 0
   rotateSpeed: 5
