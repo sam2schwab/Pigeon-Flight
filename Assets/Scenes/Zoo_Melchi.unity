@@ -385,6 +385,7 @@ MonoBehaviour:
   target: {fileID: 2145460277}
   useDefaultControls: 1
   autoLockCursor: 1
+  followTarget: 0
   verticalAngle: 30
   horizontalAngle: 0
   rotateSpeed: 5
@@ -629,6 +630,7 @@ MonoBehaviour:
   minSpeed: 0
   normalSpeed: 0
   maxSpeed: 0
+  rotateSpeed: 0
   maxStamina: 0
   stamina: 0
   bpm: 0
@@ -646,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc8c46b367c6bc418fd60f495b707ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smootht: 0
+  rotateSpeed: 5
 --- !u!95 &2145460280
 Animator:
   serializedVersion: 3

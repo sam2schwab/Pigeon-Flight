@@ -23,20 +23,20 @@ public class MyCharacterController : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
             animator.SetBool("isRunning", false);
-            Debug.Log($"isWalking = {animator.GetBool("isWalking")}, isRunning = {animator.GetBool("isRunning")}");
+            //Debug.Log($"isWalking = {animator.GetBool("isWalking")}, isRunning = {animator.GetBool("isRunning")}");
 
         }
         else if (Input.GetButton("Fire3"))
         {
             animator.SetBool("isWalking", false);
             animator.SetBool("isRunning", true);
-            Debug.Log($"isWalking = {animator.GetBool("isWalking")}, isRunning = {animator.GetBool("isRunning")}");
+            //Debug.Log($"isWalking = {animator.GetBool("isWalking")}, isRunning = {animator.GetBool("isRunning")}");
         }
         else
         {
             animator.SetBool("isWalking", true);
             animator.SetBool("isRunning", false);
-            Debug.Log($"isWalking = {animator.GetBool("isWalking")}, isRunning = {animator.GetBool("isRunning")}");
+            //Debug.Log($"isWalking = {animator.GetBool("isWalking")}, isRunning = {animator.GetBool("isRunning")}");
         }
 
         transform.Rotate(0.0f, Input.GetAxis("Mouse X") * rotateSpeed, 0.0f);
