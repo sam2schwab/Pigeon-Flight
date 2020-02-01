@@ -30,7 +30,7 @@ public class Hunted : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0.0f, Input.GetAxis("Mouse X") * rotateSpeed, 0.0f);
+        
     }
 
     private void UpdateStamina()
