@@ -25,7 +25,7 @@ public class MyCharacterController : NetworkedBehaviour
         _camera = GameObject.FindObjectOfType<Camera>().gameObject.AddComponent<MyThirdPersonCamera>();
         _camera.target = transform;
         _camera.enableHorizontalRotation = false;
-        _camera.RotateCamera(0f, 180);
+        _camera.horizontalAngle += 180;
     }
 
     // Update is called once per frame
