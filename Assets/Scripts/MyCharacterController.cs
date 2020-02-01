@@ -5,18 +5,27 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 
-public class MyCharacterController : MonoBehaviour
+public class MyCharacterController : NetworkedBehaviour
 {
     private Animator animator;
     private CapsuleCollider col;
+    private MyThirdPersonCamera _camera;
     public float rotateSpeed = 5;
     public float colPushBack;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (NetworkingManager.Singleton.IsConnectedClient && !IsLocalPlayer) { 
+            enabled = false;
+            return;
+        }
         animator = GetComponent<Animator>();
         col = GetComponent<CapsuleCollider>();
+        _camera = GameObject.FindObjectOfType<Camera>().gameObject.AddComponent<MyThirdPersonCamera>();
+        _camera.target = transform;
+        _camera.enableHorizontalRotation = false;
+        _camera.RotateCamera(0f, 180);
     }
 
     // Update is called once per frame
@@ -35,6 +44,7 @@ public class MyCharacterController : MonoBehaviour
         else animator.SetBool("goingRight", false);
 
         transform.Rotate(0.0f, Input.GetAxis("Mouse X") * rotateSpeed, 0.0f);
+        _camera.RotateCamera(0f, Input.GetAxis("Mouse X") * rotateSpeed);
     }
 
     private void OnTriggerStay(Collider collider)
@@ -51,5 +61,4 @@ public class MyCharacterController : MonoBehaviour
         Debug.Log($"Collision Exit with {collider.gameObject.name}");
         animator.applyRootMotion = true;
     }
-
 }

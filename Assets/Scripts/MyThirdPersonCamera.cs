@@ -3,9 +3,15 @@
 public class MyThirdPersonCamera : MonoBehaviour
 {
     public Transform target;
+    [Header("Controls")]
+    [Tooltip("When useDefaultControls is true, use this section to fine tune the controls")]
     public bool useDefaultControls = true;
+
+    public bool enableHorizontalRotation = true;
+    public bool enableVerticalRotation = true;
+    public bool enableZoom = true;
+    public bool enableCursorLock = true;
     public bool autoLockCursor;
-    public bool followTarget;
 
     [Header("Rotation")] 
     public float verticalAngle;
@@ -33,31 +39,31 @@ public class MyThirdPersonCamera : MonoBehaviour
         swivel = new GameObject("CameraSwivel").transform;
         swivel.position = target.position;
         swivel.rotation = Quaternion.Euler(0, target.rotation.eulerAngles.y, 0);
-        //swivel.hideFlags = HideFlags.HideInHierarchy;
+        swivel.hideFlags = HideFlags.HideInHierarchy;
 
         Cursor.lockState = (autoLockCursor)?CursorLockMode.Locked:CursorLockMode.None;
-
-        if (followTarget) this.transform.parent = swivel; //Melchi
 
     }
 
     private void LateUpdate()
     {
-        if (!followTarget)
+        var targetPosition = target.position;
+        //follow target
+        swivel.position = targetPosition;
+
+        if (useDefaultControls)
         {
-            var targetPosition = target.position;
-            //follow target
-            swivel.position = targetPosition;
-
-            if (useDefaultControls)
+            //rotate swivel
+            if (enableCursorLock && Cursor.lockState == CursorLockMode.Locked)
             {
-                //rotate swivel
-                if (Cursor.lockState == CursorLockMode.Locked)
-                {
-                    RotateCamera(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
-                }
+                RotateCamera(
+                    enableVerticalRotation ? Input.GetAxis("Mouse Y")  * rotateSpeed : 0f,
+                    enableHorizontalRotation ? Input.GetAxis("Mouse X") * rotateSpeed : 0f);
+            }
 
-                //manage cursor lock
+            //manage cursor lock
+            if (enableCursorLock)
+            {
                 if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0))
                 {
                     Cursor.lockState = CursorLockMode.Locked;
@@ -66,36 +72,17 @@ public class MyThirdPersonCamera : MonoBehaviour
                 {
                     Cursor.lockState = CursorLockMode.None;
                 }
-
-                ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
             }
 
-            //update position accordingly
-            transform.position = targetPosition + swivel.forward * distance;
-            transform.LookAt(target.transform);
+            if (enableZoom)
+            {
+                ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
+            }
         }
 
-        //Melchi
-        if (followTarget)
-        {
-            Vector3 swivelPosition = new Vector3(target.position.x, 0f, target.position.z);
-            swivel.position = swivelPosition;
-
-            Vector3 swivelRot = new Vector3();
-            verticalAngle = Mathf.Lerp(verticalAngle, verticalAngle - Input.GetAxis("Mouse Y") * rotateSpeed, Time.deltaTime * smoothRotation);
-            //verticalAngle -= Input.GetAxis("Mouse Y") * rotateSpeed;
-            verticalAngle = Clamp180(verticalAngle);
-            verticalAngle = Mathf.Clamp(verticalAngle, minVerticalAngle, maxVerticalAngle);
-            swivelRot.x = verticalAngle;
-            swivelRot.y = target.rotation.eulerAngles.y;
-            swivelRot.z = 0f;
-            swivel.rotation = Quaternion.Euler(swivelRot);//Quaternion.Slerp(swivel.rotation, Quaternion.Euler(swivelRot),Time.deltaTime * smoothRotation);
-
-
-            ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
-            transform.localPosition = Vector3.back * distance;
-        }
-
+        //update position accordingly
+        transform.position = targetPosition + swivel.forward * distance;
+        transform.LookAt(target.transform);
     }
 
     public void ZoomCamera(float zoomDelta)
@@ -104,12 +91,13 @@ public class MyThirdPersonCamera : MonoBehaviour
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
     }
 
+    
     public void RotateCamera(float verticalDelta, float horizontalDelta)
     {
-        verticalAngle -= verticalDelta * rotateSpeed;
+        verticalAngle -= verticalDelta;
         verticalAngle = Clamp180(verticalAngle);
         verticalAngle = Mathf.Clamp(verticalAngle, minVerticalAngle, maxVerticalAngle);
-        horizontalAngle += horizontalDelta * rotateSpeed;
+        horizontalAngle += horizontalDelta;
         swivel.rotation = Quaternion.Slerp(swivel.rotation, Quaternion.Euler(-verticalAngle, horizontalAngle, 0),
             Time.deltaTime * smoothRotation);
     }

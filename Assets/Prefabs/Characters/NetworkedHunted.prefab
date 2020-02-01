@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5609697829503522717}
   - component: {fileID: 5609697829503522718}
   - component: {fileID: 7251189941446415749}
-  - component: {fileID: 7187366185071673922}
   m_Layer: 0
   m_Name: NetworkedHunted
   m_TagString: Player
@@ -171,25 +170,13 @@ MonoBehaviour:
   EnableProximity: 0
   ProximityRange: 50
   _animator: {fileID: 5609697829503522714}
-  parameterSendBits: 3
+  parameterSendBits: 15
   param0: 
   param1: 
   param2: 
   param3: 
   param4: 
   param5: 
---- !u!114 &7187366185071673922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5609697829503522715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5525f2825a2388341931b9a054f5351a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5609697828025562542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +239,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3904820719068641844, guid: 9bec314acd6929e47a55550fbcd553d2,
+        type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 1731156437301015659}
     - target: {fileID: -927199367670048503, guid: 9bec314acd6929e47a55550fbcd553d2,
         type: 3}
       propertyPath: m_Name
@@ -262,6 +254,12 @@ PrefabInstance:
 --- !u!4 &622361765747351220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 9bec314acd6929e47a55550fbcd553d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5609697828025562542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1731156437301015659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6187923827164135877, guid: 9bec314acd6929e47a55550fbcd553d2,
     type: 3}
   m_PrefabInstance: {fileID: 5609697828025562542}
   m_PrefabAsset: {fileID: 0}
