@@ -8,12 +8,15 @@ using UnityEngine;
 public class MyCharacterController : MonoBehaviour
 {
     private Animator animator;
+    private CapsuleCollider col;
     public float rotateSpeed = 5;
+    public float colPushBack;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        col = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -32,6 +35,21 @@ public class MyCharacterController : MonoBehaviour
         else animator.SetBool("goingRight", false);
 
         transform.Rotate(0.0f, Input.GetAxis("Mouse X") * rotateSpeed, 0.0f);
-
     }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        Debug.Log($"Collision with {collider.gameObject.name}");
+        animator.applyRootMotion = false;
+        Vector3 pushBack = (transform.position - collider.transform.position) * colPushBack;
+        pushBack.y = 0f;
+        transform.position += pushBack;
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        Debug.Log($"Collision Exit with {collider.gameObject.name}");
+        animator.applyRootMotion = true;
+    }
+
 }
