@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MyThirdPersonCamera))]
+[RequireComponent(typeof(MyCharacterController)]
 
-public class Hunteed : MonoBehaviour
+public class Hunted : MonoBehaviour
 {
+
+
     public float minSpeed;
     public float normalSpeed;
     public float maxSpeed;

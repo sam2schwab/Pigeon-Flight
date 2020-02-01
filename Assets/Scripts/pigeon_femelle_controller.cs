@@ -19,15 +19,7 @@ public class pigeon_femelle_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //isGrounded logic here
 
-
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    animator.SetBool("isWalking", false);
-        //    animator.SetBool("isRunning", false);
-        //    animator.SetBool("isJumping", true);
-        //}
         if (Input.GetAxis("Vertical") <= 0.01f)
         {
             animator.SetBool("isWalking", false);

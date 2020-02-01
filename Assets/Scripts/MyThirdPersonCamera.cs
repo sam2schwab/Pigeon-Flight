@@ -35,6 +35,7 @@ public class MyThirdPersonCamera : MonoBehaviour
         swivel.hideFlags = HideFlags.HideInHierarchy;
         
         Cursor.lockState = (autoLockCursor)?CursorLockMode.Locked:CursorLockMode.None;
+
     }
 
     private void LateUpdate()
