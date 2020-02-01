@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MLAPI;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 
-public class MyCharacterController : MonoBehaviour
+public class MyCharacterController : NetworkedBehaviour
 {
     private Animator animator;
     public float rotateSpeed = 5;
@@ -18,7 +19,7 @@ public class MyCharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!IsLocalPlayer) return;
         if (Input.GetAxis("Vertical") <= 0.01f)
         {
             animator.SetBool("isWalking", false);
@@ -38,7 +39,7 @@ public class MyCharacterController : MonoBehaviour
             animator.SetBool("isRunning", false);
             //Debug.Log($"isWalking = {animator.GetBool("isWalking")}, isRunning = {animator.GetBool("isRunning")}");
         }
-
+    
         transform.Rotate(0.0f, Input.GetAxis("Mouse X") * rotateSpeed, 0.0f);
 
 
