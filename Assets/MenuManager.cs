@@ -16,7 +16,6 @@ public class MenuManager : MonoBehaviour
     private Canvas _canvas;
     private Vector3? _spawnPos = null;
     private Quaternion? _spawnRot = null;
-    private string HashGenerator => Hashes[_dropdown.value];
     private static readonly string[] Hashes = new []{ "Hunter","Hunted" };
     
     // Start is called before the first frame update
@@ -42,18 +41,19 @@ public class MenuManager : MonoBehaviour
     public void HostGame()
     {
         NetworkingManager.Singleton.ConnectionApprovalCallback += SingletonOnConnectionApprovalCallback;
-        NetworkingManager.Singleton.StartHost(_spawnPos, _spawnRot, true, SpawnManager.GetPrefabHashFromGenerator(HashGenerator));
+        NetworkingManager.Singleton.StartHost(_spawnPos, _spawnRot, true, SpawnManager.GetPrefabHashFromGenerator(Hashes[_dropdown.value]));
         StartGame();
     }
 
     private void SingletonOnConnectionApprovalCallback(byte[] connectionData, ulong clientId, NetworkingManager.ConnectionApprovedDelegate callback)
     {
-        callback(true, SpawnManager.GetPrefabHashFromGenerator(HashGenerator), true, _spawnPos, _spawnRot);
+        callback(true, SpawnManager.GetPrefabHashFromGenerator(Hashes[BitConverter.ToInt32(connectionData, 0)]), true, _spawnPos, _spawnRot);
     }
 
     public void JoinGame()
     {
         _transport.ConnectAddress = _ipField.text;
+        NetworkingManager.Singleton.NetworkConfig.ConnectionData = BitConverter.GetBytes(_dropdown.value);
         NetworkingManager.Singleton.StartClient();
         StartGame();
     }
