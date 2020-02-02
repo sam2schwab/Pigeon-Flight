@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MLAPI;
 using UnityEngine;
 
 
@@ -11,6 +12,18 @@ public class PlumesSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void SpawnPlumes()
+    {
+        if (!NetworkingManager.Singleton.IsServer) return;
         foreach (Transform child in transform)
         {
             spawnPoints.Add(child);
@@ -20,14 +33,8 @@ public class PlumesSpawner : MonoBehaviour
         for (int i = 0; i < plumesToSpawn; i++)
         {
             int index = Random.Range(0, spawnPoints.Count);
-            Instantiate(plumeTemplate, spawnPoints[index].transform.position, Quaternion.identity);
+            Instantiate(plumeTemplate, spawnPoints[index].transform.position, Quaternion.identity).GetComponent<NetworkedObject>().Spawn();
             spawnPoints.Remove(spawnPoints[index]);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -15,4 +15,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         
     }
+
+    public void StartGame()
+    {
+        GetComponent<PlumesSpawner>().SpawnPlumes();
+    }
 }

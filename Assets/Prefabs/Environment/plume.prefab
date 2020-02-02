@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7848291262447736596}
   - component: {fileID: 574068528267905216}
   - component: {fileID: 8454748116290460776}
+  - component: {fileID: 4247503774072989448}
   m_Layer: 0
   m_Name: plume
   m_TagString: Untagged
@@ -107,6 +108,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 100
+--- !u!114 &4247503774072989448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419036806098314184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 209037615, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkedInstanceId: 0
+  PrefabHash: 7525138154673872696
+  PrefabHashGenerator: plume
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1001 &4998301729841799123
 PrefabInstance:
   m_ObjectHideFlags: 0
