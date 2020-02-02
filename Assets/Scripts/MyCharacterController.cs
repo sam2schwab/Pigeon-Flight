@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MLAPI;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Animator))]
 
@@ -22,7 +23,8 @@ public class MyCharacterController : NetworkedBehaviour
         }
         animator = GetComponent<Animator>();
         col = GetComponent<CapsuleCollider>();
-        _camera = GameObject.FindObjectOfType<Camera>().gameObject.AddComponent<MyThirdPersonCamera>();
+        Assert.IsNotNull(Camera.main);
+        _camera = Camera.main.gameObject.AddComponent<MyThirdPersonCamera>();
         _camera.target = transform;
         _camera.enableHorizontalRotation = false;
         _camera.horizontalAngle += 180;
