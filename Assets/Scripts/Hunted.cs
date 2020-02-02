@@ -41,16 +41,16 @@ public class Hunted : MonoBehaviour
         }
         else anim.speed = normalSpeed;
 
-        bpm = 
+        //bpm = 
     }
 
 
     public void UpdateExhaustion()
     {
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("")
-        {
+        //if(anim.GetCurrentAnimatorStateInfo(0).IsName("")
+        //{
 
-        }
+        //}
     }
 
     public void UpdateBPM()
