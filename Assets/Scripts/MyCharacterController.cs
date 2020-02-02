@@ -17,7 +17,7 @@ public class MyCharacterController : NetworkedBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (NetworkingManager.Singleton != null && NetworkingManager.Singleton.IsConnectedClient && !IsLocalPlayer) { 
+        if (NetworkingManager.Singleton != null && !IsOwner) { 
             enabled = false;
             return;
         }
