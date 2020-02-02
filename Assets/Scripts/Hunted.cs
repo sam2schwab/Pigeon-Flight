@@ -90,4 +90,9 @@ public class Hunted : MonoBehaviour
             exhaustion = 0f;
         }
     }
+
+    public float GetBPM()
+    {
+        return bpm;
+    }
 }

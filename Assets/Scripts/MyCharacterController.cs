@@ -28,8 +28,31 @@ public class MyCharacterController : NetworkedBehaviour
         _camera = Camera.main.gameObject.AddComponent<MyThirdPersonCamera>();
         _camera.target = transform;
         _camera.enableHorizontalRotation = false;
+        _camera.enableZoom = false;
         _camera.horizontalAngle += 180;
         _camera.height = 1.9f;
+
+        switch (GetComponent<NetworkedObject>().PrefabHashGenerator)
+        {
+            case "Hunted":
+                break;
+            case "Hunter":
+                Camera.main.cullingMask &= ~(1 << 8);
+                ChangeLayerRecursively(gameObject, 8);
+                _camera.minDistance = _camera.maxDistance = _camera.distance = 0.1f;
+                break;
+            default:
+                throw new InvalidDataException();
+        }
+    }
+
+    private static void ChangeLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+        foreach (Transform child in obj.transform)
+        {
+            ChangeLayerRecursively(child.gameObject, layer);
+        }
     }
 
     // Update is called once per frame

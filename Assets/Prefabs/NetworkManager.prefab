@@ -52,6 +52,7 @@ MonoBehaviour:
     NetworkTransport: {fileID: 7751575296808114932}
     RegisteredScenes:
     - Zoo_Isthos
+    - Main
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
     - Prefab: {fileID: 5609697829503522715, guid: 5be292530aba5384a9fbdcd51f044e1f,
