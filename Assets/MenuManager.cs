@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     private Vector3? _spawnPos = null;
     private Quaternion? _spawnRot = null;
     private static readonly string[] Hashes = new []{ "Hunter","Hunted" };
+    public bool AutoHost = false;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,12 @@ public class MenuManager : MonoBehaviour
         _ipField.text = "127.0.0.1";
         
         Time.timeScale = 0;
+
+        if (AutoHost)
+        {
+            _dropdown.value = 1;
+            HostGame();
+        }
     }
 
     public void HostGame()
@@ -62,5 +69,6 @@ public class MenuManager : MonoBehaviour
     {
         _canvas.enabled = false;
         Time.timeScale = 1;
+        NetworkingManager.Singleton.gameObject.GetComponent<GameManager>().StartGame();
     }
 }
