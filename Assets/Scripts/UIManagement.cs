@@ -35,7 +35,7 @@ public class UIManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (collectedPlumes < plumesToCollect)
+        if (collectedPlumes < plumesToCollect && currentHp > 0)
         {
             if (currentTimer > 0)
             {
