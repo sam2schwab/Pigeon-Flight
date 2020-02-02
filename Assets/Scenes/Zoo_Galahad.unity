@@ -7230,6 +7230,7 @@ MonoBehaviour:
   plumeSpawner: {fileID: 823472700}
   gameTimer: 180
   plumesToCollect: 5
+  maxHp: 5
 --- !u!1 &632501651 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 190036, guid: 03f85cf5678193b49a79b1ffc56367d7,

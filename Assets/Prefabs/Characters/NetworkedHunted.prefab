@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7767030146558404344}
   - component: {fileID: 4157031663341422232}
   - component: {fileID: 3838615980256796878}
+  - component: {fileID: -3126909908876113606}
   m_Layer: 0
   m_Name: NetworkedHunted
   m_TagString: Player
@@ -67,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e1ae701ed4dcb4499f5e8a796f662a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exhaustedSpeed: 0.66
-  normalSpeed: 1
+  exhaustedSpeed: 0.8
+  normalSpeed: 1.5
   runningSpeed: 1.25
   maxExhaustion: 100
   backToNormal: 0.33
@@ -374,6 +375,18 @@ MonoBehaviour:
   beatEveryXsec: 0
   minVolume: 0.2
   maxVolume: 1
+--- !u!114 &-3126909908876113606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5609697829503522715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3240978472a4f4081dfe00fb6af064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1595283058573770426
 PrefabInstance:
   m_ObjectHideFlags: 0
