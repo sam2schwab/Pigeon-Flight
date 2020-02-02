@@ -16,11 +16,13 @@ public class MyCharacterController : NetworkedBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (NetworkingManager.Singleton.IsConnectedClient && !IsLocalPlayer) { 
-            enabled = false;
-            return;
-        }
+        //if (networkingmanager.singleton.isconnectedclient && !islocalplayer)
+        //{
+        //    enabled = false;
+        //    return;
+        //}
         animator = GetComponent<Animator>();
+        Debug.Log("Hello" + animator != null);
         col = GetComponent<CapsuleCollider>();
         _camera = GameObject.FindObjectOfType<Camera>().gameObject.AddComponent<MyThirdPersonCamera>();
         _camera.target = transform;
