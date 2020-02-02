@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MLAPI;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Animator))]
 
@@ -16,18 +17,18 @@ public class MyCharacterController : NetworkedBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (networkingmanager.singleton.isconnectedclient && !islocalplayer)
-        //{
-        //    enabled = false;
-        //    return;
-        //}
+        if (NetworkingManager.Singleton != null && !IsOwner) { 
+            enabled = false;
+            return;
+        }
         animator = GetComponent<Animator>();
         Debug.Log("Hello" + animator != null);
         col = GetComponent<CapsuleCollider>();
-        _camera = GameObject.FindObjectOfType<Camera>().gameObject.AddComponent<MyThirdPersonCamera>();
+        Assert.IsNotNull(Camera.main);
+        _camera = Camera.main.gameObject.AddComponent<MyThirdPersonCamera>();
         _camera.target = transform;
         _camera.enableHorizontalRotation = false;
-        _camera.RotateCamera(0f, 180);
+        _camera.horizontalAngle += 180;
     }
 
     // Update is called once per frame
