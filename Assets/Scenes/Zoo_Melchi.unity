@@ -375,7 +375,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 73a5a74e72e721144a3f34591053fcc7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 73a5a74e72e721144a3f34591053fcc7,
         type: 3}
@@ -619,10 +619,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exhaustedSpeed: 0.66
   normalSpeed: 1
-  runningSpeed: 1.5
-  maxStamina: 0
-  stamina: 0
+  runningSpeed: 1.33
+  maxExhaustion: 100
+  backToNormal: 0.333
+  rest: 10
+  exWhileRunning: 10
+  exhaustion: 0
+  minBpm: 60
+  maxBpm: 220
   bpm: 0
+  bpmCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.16569702
+      value: 0.5394249
+      inSlope: 0.4438428
+      outSlope: 0.4438428
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.05938872
+    - serializedVersion: 3
+      time: 0.8140798
+      value: 0.62846
+      inSlope: 0.25171128
+      outSlope: 0.25171128
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.066791184
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   isHidden: 0
 --- !u!114 &2145460279
 MonoBehaviour:
