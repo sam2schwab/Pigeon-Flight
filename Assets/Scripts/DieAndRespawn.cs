@@ -5,12 +5,13 @@ using UnityEngine;
 public class DieAndRespawn : MonoBehaviour
 {
     GameObject[] spawns;
-
+    GameObject UiManager;
 
     // Start is called before the first frame update
     void Start()
     {
         spawns = GameObject.FindGameObjectsWithTag("Spawn");
+        UiManager = GameObject.FindGameObjectWithTag("UiManager");
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class DieAndRespawn : MonoBehaviour
                 }
             }
             transform.position = respawn.position;
+            UiManager.GetComponent<UIManagement>().UpdateHpText(1);
         }
     }
 }
