@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MLAPI;
 using UnityEngine;
 
 
@@ -23,7 +24,7 @@ public class Plume : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player") && other.GetComponent<NetworkedObject>().IsLocalPlayer)
         {
             UpdateScore();
             Destroy(gameObject);
