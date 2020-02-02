@@ -26,6 +26,7 @@ public class MyThirdPersonCamera : MonoBehaviour
     public float zoomSpeed = 5;
     public float minDistance = 3;
     public float maxDistance = 10;
+    public float height = 3;
     
     private Transform swivel;
 
@@ -47,7 +48,7 @@ public class MyThirdPersonCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        var targetPosition = target.position;
+        var targetPosition = target.position + height * Vector3.up;
         //follow target
         swivel.position = targetPosition;
 
@@ -82,7 +83,7 @@ public class MyThirdPersonCamera : MonoBehaviour
 
         //update position accordingly
         transform.position = targetPosition + swivel.forward * distance;
-        transform.LookAt(target.transform);
+        transform.LookAt(targetPosition);
     }
 
     public void ZoomCamera(float zoomDelta)
