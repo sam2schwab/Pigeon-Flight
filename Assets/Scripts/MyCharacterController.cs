@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -90,5 +90,11 @@ public class MyCharacterController : NetworkedBehaviour
     {
         Debug.Log($"Collision Exit with {collision.gameObject.name}");
         animator.applyRootMotion = true;
+    }
+
+
+    public void RecenterCamera()
+    {
+        _camera.horizontalAngle += _camera.transform.eulerAngles.y - transform.eulerAngles.y;
     }
 }
