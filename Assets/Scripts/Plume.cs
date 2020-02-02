@@ -7,9 +7,12 @@ public class Plume : MonoBehaviour
 {
     [SerializeField] float RotationSpeed = 10.0f;
     // Start is called before the first frame update
+
+    GameObject UIManager;
+
     void Start()
     {
-        
+        UIManager = GameObject.FindGameObjectWithTag("UiManager");
     }
 
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class Plume : MonoBehaviour
     
     void UpdateScore()
     {
+        UIManager.GetComponent<UIManagement>().UpdatePlumeText(1);
         // INSERT LAN STUFF HERE!
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlumesSpawner : MonoBehaviour
 {
     List<Transform> spawnPoints = new List<Transform>();
-    [SerializeField] int plumesToSpawn = 10;
+    public int plumesToSpawn = 10;
     [SerializeField] GameObject plumeTemplate;
     // Start is called before the first frame update
     void Start()
