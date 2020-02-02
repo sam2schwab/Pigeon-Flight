@@ -67,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exhaustedSpeed: 0.66
   normalSpeed: 1
-  runningSpeed: 0.25
+  runningSpeed: 1.25
   maxExhaustion: 100
   backToNormal: 0.33
   rest: 6
