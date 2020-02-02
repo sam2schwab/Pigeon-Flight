@@ -24,7 +24,7 @@ public class Plume : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && other.GetComponent<NetworkedObject>().IsLocalPlayer)
+        if(other.CompareTag("Player") && NetworkingManager.Singleton.IsServer)
         {
             UpdateScore();
             Destroy(gameObject);

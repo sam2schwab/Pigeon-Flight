@@ -85,6 +85,9 @@ public class MyCharacterController : NetworkedBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        if (NetworkingManager.Singleton != null && !IsOwner) { 
+            return;
+        }
         Debug.Log($"Collision with {collision.gameObject.name}");
         animator.applyRootMotion = false;
         Vector3 pushBack = collision.contacts.Select(x => x.normal)
@@ -96,6 +99,9 @@ public class MyCharacterController : NetworkedBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        if (NetworkingManager.Singleton != null && !IsOwner) { 
+            return;
+        }
         Debug.Log($"Collision Exit with {collision.gameObject.name}");
         animator.applyRootMotion = true;
     }
