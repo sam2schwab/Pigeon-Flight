@@ -65,9 +65,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e1ae701ed4dcb4499f5e8a796f662a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exhaustedSpeed: 0.66
-  normalSpeed: 1
-  runningSpeed: 0.25
+  exhaustedSpeed: 1
+  normalSpeed: 1.5
+  runningSpeed: 1.25
   maxExhaustion: 100
   backToNormal: 0.33
   rest: 6
