@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using MLAPI;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -22,13 +23,13 @@ public class MyCharacterController : NetworkedBehaviour
             return;
         }
         animator = GetComponent<Animator>();
-        Debug.Log("Hello" + animator != null);
         col = GetComponent<CapsuleCollider>();
         Assert.IsNotNull(Camera.main);
         _camera = Camera.main.gameObject.AddComponent<MyThirdPersonCamera>();
         _camera.target = transform;
         _camera.enableHorizontalRotation = false;
         _camera.horizontalAngle += 180;
+        _camera.height = 1.9f;
     }
 
     // Update is called once per frame
