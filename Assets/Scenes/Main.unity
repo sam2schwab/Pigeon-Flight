@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.4964118, b: 0.574818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11276,7 +11276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318676420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.077938, y: 0, z: -15.691515}
+  m_LocalPosition: {x: -41.077938, y: 0.5, z: -15.691515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1103532850}
@@ -12503,6 +12503,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7751575296808114933, guid: 243c1ad5a9887df428c91ea8e86383ff,
+        type: 3}
+      propertyPath: NetworkConfig.RegisteredScenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751575296808114933, guid: 243c1ad5a9887df428c91ea8e86383ff,
+        type: 3}
+      propertyPath: NetworkConfig.RegisteredScenes.Array.data[1]
+      value: Main
+      objectReference: {fileID: 0}
     - target: {fileID: 7751575296808114935, guid: 243c1ad5a9887df428c91ea8e86383ff,
         type: 3}
       propertyPath: m_Name
@@ -12828,7 +12838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531104862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: 20.1}
+  m_LocalPosition: {x: 15, y: 0.5, z: 20.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1103532850}
@@ -13913,7 +13923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690075128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17, y: 0, z: -29.6}
+  m_LocalPosition: {x: 17, y: 0.5, z: -29.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1103532850}
