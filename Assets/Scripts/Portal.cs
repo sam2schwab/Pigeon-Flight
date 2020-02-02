@@ -29,6 +29,7 @@ public class Portal : MonoBehaviour
             otherPortal.GetComponent<Portal>().cooldown = maxCooldown;
             other.gameObject.transform.position = otherPortal.transform.position;
             //other.gameObject.transform.rotation = otherPortal.transform.rotation;
+            //other.gameObject.GetComponent<MyCharacterController>().RecenterCamera();
         }
     }
 }

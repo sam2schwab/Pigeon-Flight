@@ -93,8 +93,9 @@ public class MyCharacterController : NetworkedBehaviour
     }
 
 
-    public void RecenterCamera()
-    {
-        _camera.horizontalAngle += _camera.transform.eulerAngles.y - transform.eulerAngles.y;
-    }
+//    public void RecenterCamera()
+//    {
+//        Debug.Log("RECENTERING!!!!!!!!!");
+//        _camera.horizontalAngle += transform.rotation.eulerAngles.y - _camera.transform.rotation.eulerAngles.y;
+//    }
 }
