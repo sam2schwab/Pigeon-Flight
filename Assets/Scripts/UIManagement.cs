@@ -59,7 +59,7 @@ public class UIManagement : MonoBehaviour
     }
     public void UpdateHpText(int delta)
     {
-        maxHp -= delta;
+        currentHp -= delta;
         HpCountGo.GetComponent<Text>().text = currentHp.ToString() + "/" + maxHp.ToString();
         if (currentHp <= 0 && collectedPlumes < plumesToCollect)
         {
