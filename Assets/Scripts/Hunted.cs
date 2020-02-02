@@ -65,7 +65,7 @@ public class Hunted : MonoBehaviour
             {
                 exhaustion = maxExhaustion;
                 anim.SetBool("isExhausted", true);
-                anim.Play("ExhaustedAnim", 0);
+                anim.SetTrigger("Stop");
             }
         }
         else

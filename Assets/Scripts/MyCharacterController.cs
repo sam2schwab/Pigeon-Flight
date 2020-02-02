@@ -59,17 +59,25 @@ public class MyCharacterController : NetworkedBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Vertical") >= 0.1f) animator.SetBool("goingForward", true);
+        if (Input.GetKey("w")) animator.SetBool("goingForward", true);
         else animator.SetBool("goingForward", false);
+
+        if(Input.GetKey("s")) animator.SetBool("goingBackward", true);
+        else animator.SetBool("goingBackward", false);
+
+        if (Input.GetKey("a")) animator.SetBool("goingLeft", true);
+        else animator.SetBool("goingLeft", false);
+
+        if (Input.GetKey("d")) animator.SetBool("goingRight", true);
+        else animator.SetBool("goingRight", false);
 
         if (Input.GetButton("Fire3")) animator.SetBool("isRunning", true);
         else animator.SetBool("isRunning", false);
 
-        if (Input.GetAxis("Horizontal") <= -0.1f) animator.SetBool("goingLeft", true);
-        else animator.SetBool("goingLeft", false);
-
-        if (Input.GetAxis("Horizontal") >= 0.1f) animator.SetBool("goingRight", true);
-        else animator.SetBool("goingRight", false);
+        if(animator.GetBool("goingForward") || animator.GetBool("goingBackward") || animator.GetBool("goingLeft") || animator.GetBool("goingRight"))
+        {
+            animator.SetBool("isMoving", true);
+        } else animator.SetBool("isMoving", false);
 
         transform.Rotate(0.0f, Input.GetAxis("Mouse X") * rotateSpeed, 0.0f);
         _camera.RotateCamera(0f, Input.GetAxis("Mouse X") * rotateSpeed);
