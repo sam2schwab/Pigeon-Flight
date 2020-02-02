@@ -12,15 +12,15 @@ public class UIManagement : MonoBehaviour
     public GameObject TimerGo;
     public GameObject plumeSpawner;
     [SerializeField] float gameTimer = 1000.0f;
+    [SerializeField] int plumesToCollect;
 
     float currentTimer;
     Text TimerText;
-    int plumesToCollect;
     int collectedPlumes = 0;
     // Start is called before the first frame update
     void Start()
     {
-        plumesToCollect = plumeSpawner.GetComponent<PlumesSpawner>().plumesToSpawn;
+        plumesToCollect = Mathf.Min(plumeSpawner.GetComponent<PlumesSpawner>().plumesToSpawn, plumesToCollect);
         CatWinsGo.SetActive(false);
         PigeonsWinGo.SetActive(false);
         currentTimer = gameTimer;
@@ -45,5 +45,9 @@ public class UIManagement : MonoBehaviour
     {
         collectedPlumes += delta;
         PlumeCountGo.GetComponent<Text>().text = collectedPlumes.ToString() + "/" + plumesToCollect.ToString();
+        if (collectedPlumes >= plumesToCollect)
+        {
+            PigeonsWinGo.SetActive(true);
+        }
     }
 }
