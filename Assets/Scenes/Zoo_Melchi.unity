@@ -384,6 +384,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3904820719068641844, guid: 73a5a74e72e721144a3f34591053fcc7,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 73a5a74e72e721144a3f34591053fcc7,
         type: 3}
       propertyPath: m_Name
@@ -636,8 +641,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.16569702
-      value: 0.5394249
+      time: 0.30558962
+      value: 0.5408592
       inSlope: 0.4438428
       outSlope: 0.4438428
       tangentMode: 0
@@ -645,8 +650,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.05938872
     - serializedVersion: 3
-      time: 0.8140798
-      value: 0.62846
+      time: 0.6357351
+      value: 0.5694695
       inSlope: 0.25171128
       outSlope: 0.25171128
       tangentMode: 0
@@ -690,9 +695,9 @@ Animator:
   m_GameObject: {fileID: 2145460276}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 73a5a74e72e721144a3f34591053fcc7, type: 3}
-  m_Controller: {fileID: 9100000, guid: fd7356b30a3e5ed42bc8fd37b76028b9, type: 2}
+  m_Controller: {fileID: 9100000, guid: cbe79591ebacde54588e5f55ae193e20, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -726,7 +731,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!82 &2145460283

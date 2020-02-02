@@ -286,6 +286,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cat_Hunter1
       objectReference: {fileID: 0}
+    - target: {fileID: 3373415379407251932, guid: 3b32b10ec7816764fa6745b229ce4608,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373415379407251932, guid: 3b32b10ec7816764fa6745b229ce4608,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373415379407251932, guid: 3b32b10ec7816764fa6745b229ce4608,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b32b10ec7816764fa6745b229ce4608, type: 3}
 --- !u!4 &2982762079574064503 stripped
