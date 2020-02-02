@@ -4,7 +4,7 @@ using MLAPI;
 using UnityEngine;
 
 
-public class Plume : MonoBehaviour
+public class Plume : NetworkedBehaviour
 {
     [SerializeField] float RotationSpeed = 10.0f;
     // Start is called before the first frame update
@@ -24,8 +24,10 @@ public class Plume : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && NetworkingManager.Singleton.IsServer)
+        if(other.CompareTag("Player"))
         {
+            Debug.Log("player interacts");
+            Debug.Log("player is"+ (IsLocalPlayer ? " local" : "remote"));
             UpdateScore();
             Destroy(gameObject);
         }       
@@ -34,6 +36,5 @@ public class Plume : MonoBehaviour
     void UpdateScore()
     {
         UIManager.GetComponent<UIManagement>().UpdatePlumeText(1);
-        // INSERT LAN STUFF HERE!
     }
 }
