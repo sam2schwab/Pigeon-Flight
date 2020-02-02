@@ -22,6 +22,7 @@ public class MyCharacterController : NetworkedBehaviour
             return;
         }
         animator = GetComponent<Animator>();
+        Debug.Log("Hello" + animator != null);
         col = GetComponent<CapsuleCollider>();
         Assert.IsNotNull(Camera.main);
         _camera = Camera.main.gameObject.AddComponent<MyThirdPersonCamera>();
@@ -53,7 +54,8 @@ public class MyCharacterController : NetworkedBehaviour
     {
         Debug.Log($"Collision with {collider.gameObject.name}");
         animator.applyRootMotion = false;
-        Vector3 pushBack = (transform.position - collider.transform.position) * colPushBack;
+        Vector3 pushBack = (transform.position - collider.transform.position);
+        pushBack = pushBack.normalized * colPushBack;
         pushBack.y = 0f;
         transform.position += pushBack;
     }
