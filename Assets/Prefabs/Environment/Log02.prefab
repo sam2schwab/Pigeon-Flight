@@ -244,6 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9032059147040237479}
   - component: {fileID: 9032059147022529287}
+  - component: {fileID: 7991121777922655099}
   m_Layer: 0
   m_Name: Log02
   m_TagString: Untagged
@@ -295,3 +296,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 9032059147037943105}
   m_Enabled: 1
+--- !u!65 &7991121777922655099
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9032059147039882119}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15628795, y: 0.15314642, z: 0.30563706}
+  m_Center: {x: 0.00013467493, y: 0.05064611, z: 0.0028186073}

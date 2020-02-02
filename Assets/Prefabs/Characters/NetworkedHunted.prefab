@@ -65,14 +65,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e1ae701ed4dcb4499f5e8a796f662a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0
-  normalSpeed: 0
-  maxSpeed: 0
-  rotateSpeed: 0
-  maxStamina: 0
-  stamina: 0
+  exhaustedSpeed: 1
+  normalSpeed: 1
+  runningSpeed: 1
+  maxExhaustion: 0
+  exhaustion: 0
+  minBpm: 0
   bpm: 0
-  isRunning: 0
+  maxBpm: 0
   isHidden: 0
 --- !u!95 &5609697829503522714
 Animator:
