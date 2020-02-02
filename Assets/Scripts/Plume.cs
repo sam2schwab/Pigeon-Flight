@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MLAPI;
-using MLAPI.Spawning;
 using UnityEngine;
 
 
@@ -28,7 +27,6 @@ public class Plume : MonoBehaviour
         if(other.CompareTag("Player") && NetworkingManager.Singleton.IsServer)
         {
             UpdateScore();
-            gameObject.GetComponent<NetworkedObject>().UnSpawn();
             Destroy(gameObject);
         }       
     }
