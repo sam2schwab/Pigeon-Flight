@@ -1,6 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using MLAPI;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -74,19 +75,27 @@ public class MyCharacterController : NetworkedBehaviour
         _camera.RotateCamera(0f, Input.GetAxis("Mouse X") * rotateSpeed);
     }
 
-    private void OnTriggerStay(Collider collider)
+    private void OnCollisionStay(Collision collision)
     {
-        Debug.Log($"Collision with {collider.gameObject.name}");
+        Debug.Log($"Collision with {collision.gameObject.name}");
         animator.applyRootMotion = false;
-        Vector3 pushBack = (transform.position - collider.transform.position);
-        pushBack = pushBack.normalized * colPushBack;
+        Vector3 pushBack = collision.contacts.Select(x => x.normal)
+            .Aggregate(Vector3.zero, (sum, normal) => sum + normal).normalized;
+        pushBack = pushBack.normalized * colPushBack; 
         pushBack.y = 0f;
         transform.position += pushBack;
     }
 
-    private void OnTriggerExit(Collider collider)
+    private void OnCollisionExit(Collision collision)
     {
-        Debug.Log($"Collision Exit with {collider.gameObject.name}");
+        Debug.Log($"Collision Exit with {collision.gameObject.name}");
         animator.applyRootMotion = true;
     }
+
+
+//    public void RecenterCamera()
+//    {
+//        Debug.Log("RECENTERING!!!!!!!!!");
+//        _camera.horizontalAngle += transform.rotation.eulerAngles.y - _camera.transform.rotation.eulerAngles.y;
+//    }
 }
