@@ -56,9 +56,12 @@ MonoBehaviour:
     NetworkedPrefabs:
     - Prefab: {fileID: 5609697829503522715, guid: 5be292530aba5384a9fbdcd51f044e1f,
         type: 3}
-      PlayerPrefab: 1
+      PlayerPrefab: 0
+    - Prefab: {fileID: 5684126427338896093, guid: e0ade38544d0cb442a116b27de762fc8,
+        type: 3}
+      PlayerPrefab: 0
     PlayerPrefabHash:
-      Value: 13052617513614254249
+      Value: 0
     CreatePlayerPrefab: 1
     ReceiveTickrate: 64
     MaxReceiveEventsPerTickRate: 500
