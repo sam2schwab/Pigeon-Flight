@@ -1,42 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MLAPI;
+using MLAPI.Messaging;
 using UnityEngine;
 
-public class DieAndRespawn : MonoBehaviour
+public class DieAndRespawn : NetworkedBehaviour
 {
     GameObject[] spawns;
-    GameObject UiManager;
 
     // Start is called before the first frame update
     void Start()
     {
         spawns = GameObject.FindGameObjectsWithTag("Spawn");
-        UiManager = GameObject.FindGameObjectWithTag("UiManager");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Cat")
+        if (!IsLocalPlayer || !collision.gameObject.CompareTag("Cat")) return;
+        Transform respawn = spawns[0].transform;
+        float distance = 0f;
+        foreach (var item in spawns)
         {
-            Transform respawn = spawns[0].transform;
-            float distance = 0f;
-            foreach (var item in spawns)
+            float possibleDistance = Mathf.Abs((transform.position - item.transform.position).magnitude);
+            if (possibleDistance > distance)
             {
-                float possibleDistance = Mathf.Abs((transform.position - item.transform.position).magnitude);
-                if (possibleDistance > distance)
-                {
-                    distance = possibleDistance;
-                    respawn = item.transform;
-                }
+                distance = possibleDistance;
+                respawn = item.transform;
             }
-            transform.position = respawn.position;
-            UiManager.GetComponent<UIManagement>().UpdateHpText(1);
         }
+        transform.position = respawn.position;
+        InvokeServerRpc(LoseLife);
+    }
+
+    [ServerRPC]
+    public void LoseLife()
+    {
+        GameManager.Instance.LoseLife();
     }
 }

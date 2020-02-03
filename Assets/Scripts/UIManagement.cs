@@ -3,67 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManagement : MonoBehaviour
+public class UIManagement : SingletonMonoBehaviour<UIManagement>
 {
     public GameObject CatWinsGo;
     public GameObject PigeonsWinGo;
     public GameObject PlumeCountGo;
     public GameObject HpCountGo;
     public GameObject TimerGo;
-    public GameObject plumeSpawner;
-    [SerializeField] float gameTimer = 1000.0f;
-    [SerializeField] int plumesToCollect;
-    [SerializeField] int maxHp = 5;
 
-    float currentTimer;
-    Text TimerText;
-    int collectedPlumes = 0;
-    int currentHp;
-    // Start is called before the first frame update
-    void Start()
+    private Text _timerText;
+    private Text _plumesText;
+    private Text _hpText;
+
+    private void Start()
     {
-        currentHp = maxHp;
-        plumesToCollect = Mathf.Min(plumeSpawner.GetComponent<PlumesSpawner>().plumesToSpawn, plumesToCollect);
         CatWinsGo.SetActive(false);
         PigeonsWinGo.SetActive(false);
-        currentTimer = gameTimer;
-        TimerText = TimerGo.GetComponent<Text>();
-        UpdatePlumeText(0);
-        UpdateHpText(0);
+        _timerText = TimerGo.GetComponent<Text>();
+        _plumesText = PlumeCountGo.GetComponent<Text>();
+        _hpText = HpCountGo.GetComponent<Text>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayCatVictory()
     {
-        if (collectedPlumes < plumesToCollect && currentHp > 0)
-        {
-            if (currentTimer > 0)
-            {
-                currentTimer -= Time.deltaTime;
-                TimerText.text = (currentTimer.ToString("0000") + "s");
-            }
-            else
-            {
-                CatWinsGo.SetActive(true);
-            }
-        }
+        CatWinsGo.SetActive(true);
     }
-    public void UpdatePlumeText(int delta)
+    
+    public void DisplayPigeonsVictory()
     {
-        collectedPlumes += delta;
-        PlumeCountGo.GetComponent<Text>().text = collectedPlumes.ToString() + "/" + plumesToCollect.ToString();
-        if (currentTimer > 0 && collectedPlumes >= plumesToCollect && currentHp > 0)
-        {
-            PigeonsWinGo.SetActive(true);
-        }
+        PigeonsWinGo.SetActive(true);
     }
-    public void UpdateHpText(int delta)
+
+    public void UpdateTimerText(float timerValue)
     {
-        currentHp -= delta;
-        HpCountGo.GetComponent<Text>().text = currentHp.ToString() + "/" + maxHp.ToString();
-        if (currentHp <= 0 && collectedPlumes < plumesToCollect)
-        {
-            CatWinsGo.SetActive(true);
-        }
+        _timerText.text = (timerValue.ToString("0000") + "s");
+    }
+    
+    public void UpdatePlumeText(int plumes, int plumesMax)
+    {
+        _plumesText.text = plumes.ToString() + "/" + plumesMax.ToString();
+    }
+    
+    public void UpdateHpText(int hp, int maxHp)
+    {
+        _hpText.text = hp.ToString() + "/" + maxHp.ToString();
     }
 }

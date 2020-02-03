@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MLAPI;
+using MLAPI.Messaging;
 using UnityEngine;
 
 
@@ -29,14 +30,15 @@ public class Plume : NetworkedBehaviour
         {
             other.gameObject.GetComponent<AudioSource>().PlayOneShot(plumeClip);
             Debug.Log("player interacts");
-            Debug.Log("player is" + (IsLocalPlayer ? " local" : "remote"));
-            UpdateScore();
-            Destroy(gameObject);
-        }
+            Debug.Log("player is" + (other.GetComponent<NetworkedBehaviour>().IsLocalPlayer ? " local" : "remote"));
+            InvokeServerRpc(CollectPlume);
+        }       
     }
 
-    void UpdateScore()
+    [ServerRPC(RequireOwnership = false)]
+    private void CollectPlume()
     {
-        UIManager.GetComponent<UIManagement>().UpdatePlumeText(1);
+        GameManager.Instance.GainFeather();
+        Destroy(gameObject);
     }
 }

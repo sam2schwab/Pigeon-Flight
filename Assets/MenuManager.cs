@@ -69,6 +69,5 @@ public class MenuManager : MonoBehaviour
     {
         _canvas.enabled = false;
         Time.timeScale = 1;
-        NetworkingManager.Singleton.gameObject.GetComponent<GameManager>().StartGame();
     }
 }
