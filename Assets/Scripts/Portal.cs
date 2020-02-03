@@ -7,6 +7,7 @@ public class Portal : MonoBehaviour
     public float cooldown = 0f;
     [SerializeField] float maxCooldown = 5.0f;
     [SerializeField] GameObject otherPortal;
+    [SerializeField] AudioClip portalClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class Portal : MonoBehaviour
     {
         if (cooldown < 0.1f)
         {
+            GetComponent<AudioSource>().PlayOneShot(portalClip);
             otherPortal.GetComponent<Portal>().cooldown = maxCooldown;
             other.gameObject.transform.position = otherPortal.transform.position;
             //other.gameObject.transform.rotation = otherPortal.transform.rotation;
