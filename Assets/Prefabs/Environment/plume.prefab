@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 100
+  plumeClip: {fileID: 8300000, guid: bfc8a601fdf87bb459a65e4ab44c0014, type: 3}
 --- !u!114 &4247503774072989448
 MonoBehaviour:
   m_ObjectHideFlags: 0
